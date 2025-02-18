@@ -26,7 +26,7 @@ public class DigitrafficRouteBuilder extends RouteBuilder {
                 })
                 .log(LoggingLevel.DEBUG, "Received location: ${body}")
                 .setHeader(KafkaConstants.KEY, simple("${body.mmsi}"))
-                .to("kafka:location?brokers=localhost:29092,localhost:39092,localhost:49092");
+                .to("kafka:location?brokers=localhost:29092,localhost:39092,localhost:49092&valueSerializer=fi.ke.digitraffic.model.AisLocationAvroKafkaSerializer");
 
         from("paho:vessels-v2/+/metadata?" +
                 "brokerUrl=wss://meri-test.digitraffic.fi&" +
@@ -40,7 +40,7 @@ public class DigitrafficRouteBuilder extends RouteBuilder {
                 })
                 .log(LoggingLevel.DEBUG, "Received metadata: ${body}")
                 .setHeader(KafkaConstants.KEY, simple("${body.mmsi}"))
-                .to("kafka:metadata?brokers=localhost:29092,localhost:39092,localhost:49092");
+                .to("kafka:metadata?brokers=localhost:29092,localhost:39092,localhost:49092&valueSerializer=fi.ke.digitraffic.model.AisMetadataAvroKafkaSerializer");
 
 
         CamelContext ctx = getContext();
