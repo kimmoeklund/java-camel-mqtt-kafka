@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fi.ke</groupId>
-    <artifactId>digitraffic-meri-camel</artifactId>
+    <artifactId>java-camel-mqtt-kafka</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -56,12 +56,10 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-kafka</artifactId>
-            <!-- use the same version as your Camel core version -->
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-jackson</artifactId>
-            <!-- use the same version as your Camel core version -->
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -74,12 +72,7 @@
             <artifactId>junit-jupiter-params</artifactId>
             <version>5.11.4</version>
             <scope>test</scope>
-        </dependency>        <!-- testing
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-test-infra-common</artifactId>
-            <scope>test</scope>
-        </dependency> -->
+        </dependency>
     </dependencies>
     <build>
         <defaultGoal>install</defaultGoal>
