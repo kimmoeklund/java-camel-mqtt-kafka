@@ -22,11 +22,11 @@ public class KStreamApp {
         StreamsBuilder builder = new StreamsBuilder();
         createTopology(builder);
         // Build and start the streams
-        try (KafkaStreams streams = new KafkaStreams(builder.build(), props)) {
-            streams.start();
-            // Add shutdown hook to respond to SIGTERM and gracefully close Kafka Streams
-            Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
-        }
+        KafkaStreams streams = new KafkaStreams(builder.build(), props);
+        streams.cleanUp();
+        streams.start();
+        // Add shutdown hook to respond to SIGTERM and gracefully close Kafka Streams
+        Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
     }
 
     public static Properties loadProperties() {

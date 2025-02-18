@@ -144,9 +144,9 @@
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-maven-plugin</artifactId>
                 <configuration>
-                    <logClasspath>true</logClasspath>
                     <mainClass>fi.ke.digitraffic.camel.CamelApp</mainClass>
                 </configuration>
+                <version>4.9.0</version>
             </plugin>
         </plugins>
     </build>
