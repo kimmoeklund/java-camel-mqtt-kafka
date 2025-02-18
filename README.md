@@ -28,3 +28,7 @@ should see entries like this
 2025-02-18 18:14:11.494 [ais-processor-client-StreamThread-1] INFO  fi.ke.digitraffic.kafka.KStreamApp - meta key=668116152, value=VesselState[location=AisLocation[mmsi=668116152, time=1739895245, sog=10.2, cog=73.0, navStat=0, rot=0, posAcc=true, raim=false, heading=69, lon=23.3659, lat=59.5468], metadata=AisMetadata[mmsi=668116152, timestamp=1739895226138, destination=RUULU, name=OZANNO, draught=81, eta=170560, posType=1, refA=208, refB=42, refC=16, refD=28, callSign=S9-VW, imo=9394935, type=80]]
 ```
 Use CTRL-C to stop the script which will kill the apps.
+
+### Known issues
+
+The digitraffic's test environment server mqtt connection fails time-to-time, if this happens, please try again.
