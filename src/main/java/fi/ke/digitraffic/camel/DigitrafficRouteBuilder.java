@@ -15,8 +15,8 @@ public class DigitrafficRouteBuilder extends RouteBuilder {
 
     public void configure() {
         from("paho:vessels-v2/+/location?" +
-                "brokerUrl=wss://meri-test.digitraffic.fi&" +
-                "clientId=fi.ke")
+               "brokerUrl={{mqtt.server}}&" +
+               "clientId=fi.ke")
                 .routeId("mqtt-location")
                 .unmarshal().json(JsonLibrary.Jackson)
                 .process(exchange -> {
@@ -26,7 +26,7 @@ public class DigitrafficRouteBuilder extends RouteBuilder {
                 })
                 .log(LoggingLevel.DEBUG, "Received location: ${body}")
                 .setHeader(KafkaConstants.KEY, simple("${body.mmsi}"))
-                .to("kafka:location?brokers=localhost:29092,localhost:39092,localhost:49092&valueSerializer=fi.ke.digitraffic.model.AisLocationAvroKafkaSerializer");
+                .to("kafka:vessel-location?brokers={{kafka.bootstrap.brokers}}&valueSerializer=fi.ke.digitraffic.model.AisLocationAvroSerializer");
 
         from("paho:vessels-v2/+/metadata?" +
                 "brokerUrl=wss://meri-test.digitraffic.fi&" +
@@ -40,7 +40,7 @@ public class DigitrafficRouteBuilder extends RouteBuilder {
                 })
                 .log(LoggingLevel.DEBUG, "Received metadata: ${body}")
                 .setHeader(KafkaConstants.KEY, simple("${body.mmsi}"))
-                .to("kafka:metadata?brokers=localhost:29092,localhost:39092,localhost:49092&valueSerializer=fi.ke.digitraffic.model.AisMetadataAvroKafkaSerializer");
+                .to("kafka:vessel-metadata?brokers={{kafka.bootstrap.brokers}}&valueSerializer=fi.ke.digitraffic.model.AisMetadataAvroSerializer");
 
 
         CamelContext ctx = getContext();
