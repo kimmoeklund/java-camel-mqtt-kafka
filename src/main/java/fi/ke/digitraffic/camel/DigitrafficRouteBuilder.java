@@ -1,4 +1,4 @@
-package fi.ke.digitraffic;
+package fi.ke.digitraffic.camel;
 
 import fi.ke.digitraffic.model.AisLocation;
 import fi.ke.digitraffic.model.AisMetadata;
@@ -8,12 +8,10 @@ import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.kafka.KafkaConstants;
 import org.apache.camel.model.dataformat.JsonLibrary;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 
 import java.util.Optional;
 
-public class MeriRouteBuilder extends RouteBuilder {
+public class DigitrafficRouteBuilder extends RouteBuilder {
 
     public void configure() {
         from("paho:vessels-v2/+/location?" +
