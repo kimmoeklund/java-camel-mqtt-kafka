@@ -14,10 +14,8 @@ import org.apache.logging.log4j.LogManager;
 import java.util.Optional;
 
 public class MeriRouteBuilder extends RouteBuilder {
-    private static final Logger LOGGER = LogManager.getLogger("MeriRouteBuilder");
-    @Override
 
-    public void configure() throws Exception {
+    public void configure() {
         from("paho:vessels-v2/+/location?" +
                 "brokerUrl=wss://meri-test.digitraffic.fi&" +
                 "clientId=fi.ke")

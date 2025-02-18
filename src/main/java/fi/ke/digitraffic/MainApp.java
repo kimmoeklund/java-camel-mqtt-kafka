@@ -7,6 +7,5 @@ public class MainApp {
         Main main = new Main();
         main.configure().addRoutesBuilder(new MeriRouteBuilder());
         main.run(args);
-        //camelContext.getGlobalOptions().put("CamelJacksonEnableTypeConverter", "true");
     }
 }
