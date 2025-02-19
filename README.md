@@ -2,8 +2,8 @@
 
 This is "learner" application to learn basics with Apache Camel and Kafka KStreams API.
 
-CamelApp: Application reads vessel AIS messages from MQTT topic and publishes them to Kafka topics.
-KStreamsApp: Joins vessel location and metadata messages as table 
+CamelApp: Application reads vessel AIS messages from MQTT topic and publishes them to Kafka topics. This application uses Digitraffic's [websocket API](https://www.digitraffic.fi/meriliikenne/#mqtt-websocket--rajapinnat) and their test environment. 
+KStreamsApp: Joins vessel location and metadata messages as table.  
 
 ### Prerequisites
 
@@ -15,8 +15,8 @@ KStreamsApp: Joins vessel location and metadata messages as table
 
 1. Start Kafka cluster with `docker-compose up -d`
 2. Create topics
-- `kafka-topics.sh --create --topic vessel-location --partitions 5 --bootstrap-server localhost:29092`
-- `kafka-topics.sh --create --topic vessel-metadata --partitions 5 --bootstrap-server localhost:29092`
+- `kafka-topics.sh --create --topic vessel-location --partitions 6 --bootstrap-server localhost:29092`
+- `kafka-topics.sh --create --topic vessel-metadata --partitions 6 --bootstrap-server localhost:29092`
 
 ### Run
 
@@ -31,4 +31,4 @@ Use CTRL-C to stop the script which will kill the apps.
 
 ### Known issues
 
-The digitraffic's test environment server mqtt connection fails time-to-time, if this happens, please try again.
+Digitraffic API limits connections to 5 per minute based on the IP.
